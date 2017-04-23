@@ -53,4 +53,22 @@ end
 def payment_form
   render("calculations/payment_new.html.erb")
 end
+
+def random_generator
+@user_min = params[:min].to_i
+@user_max = params[:max].to_i
+@user_rand=rand(@user_min..@user_max)
+render("calculations/flexible/random_generator.html.erb")
+end
+
+def random_form
+  render("calculations/random_new.html.erb")
+end
+
+def random_results
+@user_min = params["min"].to_i
+@user_max = params["max"].to_i
+@user_rand=rand(@user_min..@user_max)
+render("calculations/random_results.html.erb")
+end
 end

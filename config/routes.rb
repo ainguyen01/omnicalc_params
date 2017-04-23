@@ -12,5 +12,9 @@ get("flexible/payment/:basis_points/:number_of_years/:present_value", {:controll
 get("payment/new", {:controller => "calculations", :action=> "payment_form"})
 get("payment/results", {:controller => "calculations", :action=> "payment_results"})
 
+get("flexible/random/:min/:max", {:controller=> "calculations", :action=> "random_generator"})
+get("random/new", {:controller=> "calculations", :action=> "random_form"})
+get("random/results", {:controller=> "calculations", :action=> "random_results"})
+
 
 end

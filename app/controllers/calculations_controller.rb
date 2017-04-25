@@ -36,18 +36,21 @@ class CalculationsController <ApplicationController
     @period=(-@user_term*12)
     @monthly_rate=(@user_rate/120000)
     @payment= @numerator/(1-((1+@monthly_rate)**@period))
-    @percentage=(@user_rate/100).round(2)
+    @percentage=(@user_rate/100)
     render ("calculations/flexible_payment.html.erb")
   end
 
-def monthly_payment_results
+def payment_results
   @user_term = params["number_of_years"].to_f
-  @user_rate = params["basis_points"].to_f
+  @user_rate = params["rate"].to_f
   @user_loan = params["present_value"].to_f
-  @numerator=((@user_rate/120000)*@user_loan)
+
+  @numerator=((@user_rate/1200)*@user_loan)
   @period=(-@user_term*12)
-  @monthly_rate=(@user_rate/120000)
+  @monthly_rate=(@user_rate/1200)
   @payment= @numerator/(1-((1+@monthly_rate)**@period))
+  @percentage=(@user_rate)
+
   render ("calculations/payment_results.html.erb")
 end
 
